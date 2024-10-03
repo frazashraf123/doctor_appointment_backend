@@ -1,17 +1,13 @@
 import mongoose from "mongoose";
 
-const connectDB = async () => {
+const coonectMongo = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI, {
-      useUnifiedTopology: true,
-      useNewUrlParser: true,
-    });
-
-    console.log(`MongoDB connected: ${conn.connection.host}`);
-  } catch (error) {
-    console.log(`Error: ${error.message}`);
+    await mongoose.connect("mongodb://localhost:27017/prescripto");
+    console.log("connected to database successfully");
+  } catch (err) {
+    console.log("Error in db connection: ", err);
     process.exit(1);
   }
 };
 
-export default connectDB;
+export default coonectMongo;
