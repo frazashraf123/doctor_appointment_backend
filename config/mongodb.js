@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const coonectMongo = async () => {
   try {
-    await mongoose.connect("mongodb://localhost:27017/prescripto");
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("connected to database successfully");
   } catch (err) {
     console.log("Error in db connection: ", err);
